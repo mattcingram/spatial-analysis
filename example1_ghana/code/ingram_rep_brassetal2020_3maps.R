@@ -11,6 +11,7 @@
 
 ############################
 # if returning to project, load last working data file:
+# e.g.:
 load("./data/working/working20230626_processing.RData")
 
 ############################
