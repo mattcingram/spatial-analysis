@@ -3708,8 +3708,10 @@ dev.off()
 
 
 ##########################################################
-# SPATIAL FILTERING (to explore Griffith's 2008 critiques of GWR)
-# eigenvectory spatial filtering
+# SPATIAL FILTERING (to explore Griffith's 2008 critiques of GWR), and also useful for discussion abuot additional modeling considerations,
+# especially as related to the relevant quantity of interest
+
+# eigenvector spatial filtering (ESF)
 library(spatialreg)
 
 # FIRST, use default for SpatialFiltering()
@@ -3757,7 +3759,7 @@ stargazer(model_esf$selection, type="latex", out="./tables/model_esf.tex",
 # Springer-Verlag, New York. It was retired from the second edition (2013) 
 # to accommodate material on other topics, and is made available in this form with the understanding of the publishers."
 
-# eigenvector spatial filtering in lag form
+# eigenvector spatial filtering (i.e., ESF)  in lag form
 model_esf_lag <- spatialreg::SpatialFiltering(
   formula = formula(Count_ ~ 1), # if lagformula used, formula should include only outcome and intercept
   lagformula = formula(~ pov_p_2008 + gini_2008 + ferat_2008 + p_share + p_shvol + 
@@ -3780,7 +3782,7 @@ egvectors_lag_df <- as.data.frame(egvectors_lag)
 # adjust names of vectors for lag model
 names(egvectors_lag_df) <- paste(names(egvectors_lag_df), "_lag", sep="")
 
-# Bind the eigenvectors into your main dataset
+# merge/bind vectors to sf object
 temp <- cbind(shp.sf, egvectors_df, egvectors_lag_df)
 
 
@@ -3788,65 +3790,52 @@ temp <- cbind(shp.sf, egvectors_df, egvectors_lag_df)
 
 library(patchwork) # For placing maps side-by-side
 
-# Map the first chosen eigenvector (e.g., "vec1")
+# plot the first eigenvector (e.g., "vec1")
 map_vec3 <- ggplot(data = temp) +
   geom_sf(aes(fill = vec3), color = "grey80", size = 0.1) +
-  #scale_fill_viridis_c(option = "plasma", name = "Vector 3 Value") +
+  #scale_fill_viridis_c() +
   scale_fill_gradient2(low="blue", mid="white", high="red", midpoint=0) +
-  #labs(title = "Vector 3") +
   theme_void()
 
-# Map the second chosen eigenvector
+# plot the second vector
 map_vec17 <- ggplot(data = temp) +
   geom_sf(aes(fill = vec17), color = "grey80", size = 0.1) +
-  #scale_fill_viridis_c(option = "plasma", name = "Vector 3 Value") +
   scale_fill_gradient2(low="blue", mid="white", high="red", midpoint=0) +
-  #labs(title = "Vector 17") +
   theme_void()
 
-# Map the third chosen eigenvector
+# plot the third eigenvector
 map_vec6 <- ggplot(data = temp) +
   geom_sf(aes(fill = vec6), color = "grey80", size = 0.1) +
-  #scale_fill_viridis_c(option = "plasma", name = "Vector 3 Value") +
   scale_fill_gradient2(low="blue", mid="white", high="red", midpoint=0) +
-  #labs(title = "Vector 6") +
   theme_void()
 
-# Map the fourth chosen eigenvector
+# plot the fourth  eigenvector
 map_vec2 <- ggplot(data = temp) +
   geom_sf(aes(fill = vec2), color = "grey80", size = 0.1) +
-  #scale_fill_viridis_c(option = "plasma", name = "Vector 3 Value") +
   scale_fill_gradient2(low="blue", mid="white", high="red", midpoint=0) +
-  #labs(title = "Vector 2") +
   theme_void()
 
-# Map the fifth chosen eigenvector
+# plot the fifth eigenvector
 map_vec18 <- ggplot(data = temp) +
   geom_sf(aes(fill = vec18), color = "grey80", size = 0.1) +
-  #scale_fill_viridis_c(option = "plasma", name = "Vector 3 Value") +
   scale_fill_gradient2(low="blue", mid="white", high="red", midpoint=0) +
-  #labs(title = "Vector 18") +
   theme_void()
 
 # lag model: just 2 vectors selected: vec3_lag and vec23_lag
 
 map_vec3_lag <- ggplot(data = temp) +
   geom_sf(aes(fill = vec3_lag), color = "grey80", size = 0.1) +
-  #scale_fill_viridis_c(option = "plasma", name = "Vector 3 Value") +
   scale_fill_gradient2(low="blue", mid="white", high="red", midpoint=0) +
-  #labs(title = "Vector 3") +
   theme_void()
 
-# Map the second chosen eigenvector
+# plot the second eigenvector
 map_vec23_lag <- ggplot(data = temp) +
   geom_sf(aes(fill = vec23_lag), color = "grey80", size = 0.1) +
-  #scale_fill_viridis_c(option = "plasma", name = "Vector 3 Value") +
   scale_fill_gradient2(low="blue", mid="white", high="red", midpoint=0) +
-  #labs(title = "Vector 17") +
   theme_void()
 
 
-# Display side-by-side
+# plot side-by-side
 map_vec3 + map_vec2 + map_res
 
 # or all 5 vectors
@@ -3876,9 +3865,8 @@ png(file="./figures/spatialfiltermaps_lag.png", height=6, width=6, units="in", r
 print(g)
 dev.off()
 
-# re-fit the model with the chosen eigenvectors (adding them as additional parameters)
 
-# Construct a formula that appends all selected eigenvectors
+# adjust formula to include all selected eigenvectors
 # (e.g., chosen_eigenvectors are named vec1, vec2, etc.)
 final_formula <- as.formula(
   paste("Count_ ~ pov_p_2008 + gini_2008 + ferat_2008 + p_share + p_shvol + 
@@ -3894,7 +3882,7 @@ final_formula_lag <- as.formula(
         paste(colnames(egvectors_lag_df), collapse = " + "), sep =" + ")
 )
 
-# Run the final ESF-purged OLS regression
+# run the final model with vectors
 final_model <- lm(final_formula, data = temp)
 final_model_lag <- lm(final_formula_lag, data = temp)
 summary(final_model)
