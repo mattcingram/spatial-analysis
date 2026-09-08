@@ -3,7 +3,7 @@
 # Ingram, Matt 
 # Reproduction of Brass et al. (2020) in Political Geography
 # created: 2023-04-23
-# last updated: 2026-07-26
+# last updated: 2026-09-08
 # steps here: generate connectivity matrix (W) and graph
 #
 ################################################################################
