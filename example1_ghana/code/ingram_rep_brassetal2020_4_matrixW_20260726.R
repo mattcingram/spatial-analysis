@@ -10,11 +10,11 @@
 
 ##########################################################
 # if returning to project and want to run this file from scratch, load last working data file:
+# e.g.
 load("./data/working/working20230626_processing.RData")
 
 # if returning to file and want all output from this file in memory:
 load("./data/working/working20260617_W.RData")
-
 
 ##############################################
 # assign unit IDs by region
@@ -91,7 +91,6 @@ str(nb.q1)
 head(nb.q1)
 # e.g., unit 1 has 3 neighbors: 125, 128, and 129
 
-
 #################################
 # distance-based nbs
 #################################
@@ -124,7 +123,6 @@ k5 <- knn2nb(knearneigh(coords, k=5))
 # change to listw
 wk5 <- nb2listw(k5, style="B", zero.policy=T)  # basic binary coding
 
-
 # distanec based alternatives:
 
 # any neighbors within specificed distance
@@ -143,7 +141,6 @@ nbs_dist75k <- dnearneigh(coords, d1 = 0, d2 = 75000) # find all neighbors (nbs)
 w_dist75k <- nb2listw(nbs_dist75k, style = "W", zero.policy = TRUE)
 
 
-
 # inverse distance weights (IDW)
 # start with nbs within specified distance, e.g., nbs_dist50k
 w_idw50k <- nb2listwdist(nbs_dist50k, as(centroids, "Spatial"), type = "idw", style = "W", zero.policy = TRUE)
@@ -154,7 +151,6 @@ distances <- nbdists(k5, coords)
 inv_distances <- lapply(distances, function(x) 1 / x)
 # convert to w
 w_idw_k5 <- nb2listw(k5, glist = inv_distances, style = "W")
-
 
 
 #####################################################
@@ -184,7 +180,6 @@ plot(k5, coords=coords, col="red", add=TRUE)
 plot(st_geometry(shp.sf), border="grey", reset=FALSE, 
      main=paste("distance-based nb, 0-", round(all.linked,3), sep=""))
 plot(dist.nb.0.all, coords=coords, col="red", add=TRUE)
-
 
 ########################################################
 #### Convert neighbor list to spatial weights matrix (W), 
@@ -261,7 +256,6 @@ wr1b
 # confirm same connections
 str(wq1b)
 str(wr1b)
-
 
 
 ##################################################3
@@ -362,8 +356,6 @@ g2
 png(file="./figures/map_wr1.png", height=6, width=6, units="in", res=300)
 print(g2)
 dev.off()
-
-
 
 # shorter, uncommented version with k1 W
 
@@ -808,8 +800,6 @@ g <- ggplot(data=grid_temp_sf) +
 png(file="./figures/autocorrelation_sim_positive.png", height=6, width=6, units="in", res=300)
 print(g)
 dev.off()
-
-
 
 ####################################
 # save working data
