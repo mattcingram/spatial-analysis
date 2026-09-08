@@ -3,7 +3,7 @@
 # Ingram, Matt 
 # Reproduction of Brass et al. (2020) in Political Geography
 # created: 2023-04-23
-# last updated: 2025-12-09
+# last updated: 20260908
 # steps here: basic mapping of different data types; retrieving background maps 
 # from web
 #
