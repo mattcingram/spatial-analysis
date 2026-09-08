@@ -10,6 +10,7 @@
 
 ##########################################################
 # if returning to project, load last working data file:
+# e.g.,
 load("./data/working/working20230626_W.RData")
 
 
@@ -1167,7 +1168,6 @@ hist(localg_tab$localg_p_perm)
 boxplot(localg_tab$localg_p_perm)
 
 
-
 # if want local G* with sfdep:
 localgs_3_perm <- sfdep::local_gstar_perm(shp$Count_, nb=wq1b$neighbours, wt=wq1b$weights,
                                           nsim=4999)
@@ -1280,7 +1280,6 @@ temp$localc_cluster_perm_sim[temp$localc_psim_perm>0.05] <- "n.s."
 temp$localc_cluster_perm_foldedsim[temp$localc_pfoldedsim_perm>0.05] <- "n.s."
 
 
-
 table(temp$localc_cluster_perm)
 table(temp$localc_cluster_perm_sim)
 table(temp$localc_cluster_perm_foldedsim)
@@ -1317,7 +1316,6 @@ print(g)
 dev.off()
 
 
-
 # table
 localc_tab <- st_drop_geometry(temp) |>
   select(DIST_2008, localc_pfoldedsim_perm, localc_cluster_perm_foldedsim) |>
@@ -1349,13 +1347,6 @@ print.xtable(xtable(localc_tab[1:5,], digits=2),
 summary(localc_tab)
 hist(localc_tab$localc_p_perm)
 boxplot(localc_tab$localc_p_perm)
-
-
-
-
-
-
-
 
 
 # using rgeoda
@@ -1408,7 +1399,6 @@ dev.off()
 
 ###################################
 # using sfdep
-
 
 localc_3 <- sfdep::local_c(shp$Count_, nb=wq1b$neighbours, wt=wq1b$weights)
 localc_3
@@ -1511,19 +1501,15 @@ hist(localc_tab$localc_p_perm)
 boxplot(localc_tab$localc_p_perm)
 
 
-
-
 # overall, prefer Local Moran
 # -- get both similarity and dissimilarity, like local C
 # -- split "negative" clusters into low-high and high-low
 # more intuitive range from negative values (dissimilar) to positive values (similar), which 
 # resonates with common statistics like correlation coefficients or betas
 
-
 ####################################
 # save working data
 
 save.image("./data/working/working20230626_exploratory.RData")
-
 
 #end
