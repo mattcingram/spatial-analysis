@@ -1173,6 +1173,6 @@ st_write(shp.sf, dsn="./data/working", layer="ghana_working",
 
 # save working data
 
-save.image("./data/working/working20260710_processing.RData")
+save.image(paste("./data/working/working_", Sys.Date(), "_processing.RData", sep=""))
 
 #end
