@@ -1,0 +1,29 @@
+channels:
+  - conda-forge
+dependencies:
+  - r-base=4.3
+  - r-sf
+  - r-spdep
+  - r-rgdal
+  - r-spatialreg
+  - r-terra
+  - r-ggmap
+  - r-tmap
+  - r-igraph
+  - r-network
+  - r-tidyverse
+  - r-foreign
+  - r-haven
+  - r-xtable
+  - r-stargazer
+  - r-ggplot2
+  - r-gridExtra
+  - r-broom
+  - r-tictoc
+  - r-plyr
+  - r-dplyr
+  - r-sandwich
+  - r-lmtest
+  - r-olsrr
+  - r-estimatr
+  - r-png
