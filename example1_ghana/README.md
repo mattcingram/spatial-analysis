@@ -6,6 +6,6 @@ This binder uses conda to install R packages. This is done via the environment.y
 
 Click on one of the images below to open binder online:
 
-Jupyter + R:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mattcingram/spatial-analysis/example1_ghana/HEAD)
+Jupyter + R:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mattcingram/spatial-analysis/tree/main/example1_ghana)
 
-Jupyter + RStudio:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mattcingram/spatial_conda/HEAD?urlpath=rstudio)
+Jupyter + RStudio:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mattcingram/spatial-analysis/tree/main/example1_ghana?urlpath=rstudio)
