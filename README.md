@@ -1,6 +1,6 @@
 # Spatial Analysis: An Applied Introduction
 
-This site maintains replication materials for the book, _Spatial Analysis: An Applied Introduction_.
+This site maintains replication materials for the book, _Spatial Analysis: An Applied Introduction_ (under contract, Cambridge University Press; full manuscript submitted Sep. 1, 2026).
 
 The materials are organized according to the empirical work being replicated, and will be maintained and updated on an ongoing basis.
 
