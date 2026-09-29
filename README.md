@@ -4,13 +4,7 @@ This site maintains replication materials for the book, _Spatial Analysis: An Ap
 
 The materials are organized according to the empirical work being replicated, and will be maintained and updated on an ongoing basis.
 
-## Example 1
-
-The empirical example running throughout the book is from Brass et al. (2020). The study region is Ghana, the outcome of interest is the number of solar panels, and explanatory factors include a wide range of socio-economic, political, demographic, and other variables. The units of analysis are districts in Ghana. The article is a great example to use with audiences interested in development and democracy, green energy, or West Africa, as well as research methods. This example is excellent for learning spatial analysis because the data lend themselves to testing all spatial effects covered in the book. Further, from a practical perspective, the number of observations (N=170) is in a kind of ''sweet spot'' for learning spatial analysis. With an N like this, the different spatial effects can be examined in depth, and there are no long computational delays while running diagnostics or estimated models. For instance, every technique can be implemented in a classroom or workshop environment without extended delays for computationally-intensive steps. 
-
-Among the practical examples included here, this example has the most complete set of materials reflecting every aspect of materials covered in the book. 
-
-### Virtual Containers: Links to Binder
+## Virtual Containers: Links to Binder
 
 This binder uses conda to install R packages. This is done via the environment.yml file. Some packages may not be available that might otherwise be available using other methods, e.g., install.R and runtime.txt files.
 
@@ -20,6 +14,12 @@ Jupyter + R:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.
 
 Jupyter + RStudio:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mattcingram/spatial-analysis/HEAD?urlpath=rstudio)
 
+
+## Example 1
+
+The empirical example running throughout the book is from Brass et al. (2020). The study region is Ghana, the outcome of interest is the number of solar panels, and explanatory factors include a wide range of socio-economic, political, demographic, and other variables. The units of analysis are districts in Ghana. The article is a great example to use with audiences interested in development and democracy, green energy, or West Africa, as well as research methods. This example is excellent for learning spatial analysis because the data lend themselves to testing all spatial effects covered in the book. Further, from a practical perspective, the number of observations (N=170) is in a kind of ''sweet spot'' for learning spatial analysis. With an N like this, the different spatial effects can be examined in depth, and there are no long computational delays while running diagnostics or estimated models. For instance, every technique can be implemented in a classroom or workshop environment without extended delays for computationally-intensive steps. 
+
+Among the practical examples included here, this example has the most complete set of materials reflecting every aspect of materials covered in the book. 
 
 ## Additional Examples
 
